@@ -1,0 +1,15 @@
+{% load puepy %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  {% puepy_headers %}
+</head>
+<body>
+{% csrf_token %}
+<div id="app">Loading...</div>
+{% puepy_script runtime=puepy_runtime frontend_url=frontend_url config=pyscript_config %}
+</body>
+</html>
