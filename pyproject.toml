@@ -9,7 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = "^5.0.7"
-puepy = "^0.3.5"
+puepy = "^0.3.7"
 json-dt-serializer = "^1.1.0"
 
 
