@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-puepy"
-version = "0.1.1"
+version = "0.1.2"
 description = "PuePy integration for Django"
 authors = ["Ken Kinder <ken+github@kkinder.com>"]
 license = "Apache"
