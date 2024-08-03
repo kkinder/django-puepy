@@ -20,7 +20,7 @@ async def call(url, data):
     token = js.document.querySelector("[name=csrfmiddlewaretoken]").value
 
     response = await fetch(
-        js.window.location,
+        str(js.window.location.href),
         method="POST",
         body=dtjson.dumps(data),
         headers={"X-CSRFToken": token},
