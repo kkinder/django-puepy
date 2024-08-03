@@ -1,61 +1,3 @@
-# Django PuePy Integration
-
-Provides [PuePy](https://puepy.dev) integration for Django.
-
-## Installation
-
-1. Install the package using pip:
-
-```
-pip install django_puepy
-```
-
-2. Add `django_puepy` to your `INSTALLED_APPS`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "django_puepy",
-]
-```
-
-## Usage
-
-Take a look at the `example_app` directory for a very simple Django app that makes use of django_puepy. There are just two files:
-
-- `example_app/backend_server.py`: Simple one-file Django app that shows a server-side Django controller
-- `example_app/static/todo.py`: The frontend PuePy code that interacts with the Django controller
-
-### Backend Usage
-
-Our example backend app, `example_app/backend_server.py`, specifies a frontend file, a runtime, and three ajax methods that are called by the frontend.
-
-```python
-class TodoView(PuePyView):
-    frontend_url = "/static/todo.py"
-    runtime = "mpy"
-
-    @PuePyView.ajax
-    def add_todo(self, item):
-        todo_list.append(item)
-        return todo_list
-
-    @PuePyView.ajax
-    def remove_todo(self, index):
-        try:
-            del todo_list[index]
-        except IndexError:
-            pass
-        return todo_list
-
-    @PuePyView.ajax
-    def get_todos(self):
-        return todo_list
-```
-
-The frontend file, `static/todo.py`, is a regular PuePy app+page, but makes calls to the django_backend to interact with the ajax methods specified above:
-
-```python
 from puepy import Application, Page, t
 
 app = Application()
@@ -116,12 +58,3 @@ class TodoPage(Page):
 
 
 app.mount("#app")
-```
-
-The result? A demo todo app.
-
-## Project status
-
-While PuePy is approach relative stability, this Django integration is currently only an experiment. It is not recommended for production use *at all* and will hopefully evolve over time.
-
-
